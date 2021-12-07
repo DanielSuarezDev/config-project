@@ -15,13 +15,20 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint --ext .js,.jsx src test"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && npm run test",
+      "pre-push": "git diff HEAD --quiet && npm run test && npm run lint"
+    }
   },
   "browserslist": {
     "production": [
@@ -34,5 +41,19 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/jest": "^27.0.3",
+    "@types/node": "^16.11.12",
+    "@types/react": "^17.0.37",
+    "@types/react-dom": "^17.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.6.0",
+    "@typescript-eslint/parser": "^5.6.0",
+    "eslint": "^8.4.1",
+    "eslint-plugin-react": "^7.27.1",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.1.2",
+    "prettier": "2.5.1",
+    "typescript": "^4.5.2"
   }
 }

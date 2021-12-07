@@ -1,0 +1,45 @@
+{
+  "root": true,
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": { "project": ["./tsconfig.json"] },
+  "plugins": ["@typescript-eslint"],
+  "rules": {
+    "no-console": "error",
+    "import/prefer-default-export": "off",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "error",
+    "camelcase": ["warn"],
+    "no-else-return": 1,
+    "semi": [1, "always"],
+    "space-unary-ops": 2,
+    "@typescript-eslint/strict-boolean-expressions": [
+      2,
+      {
+        "allowString": false,
+        "allowNumber": false
+      }
+    ],
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    ],
+    "max-len": [
+      "warn",
+      {
+        "code": 100,
+        "tabWidth": 2,
+        "comments": 80,
+        "ignoreComments": false,
+        "ignoreTrailingComments": true,
+        "ignoreUrls": true,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true,
+        "ignoreRegExpLiterals": true
+      }
+    ]
+  },
+  "ignorePatterns": ["src/**/*.test.ts", "src/frontend/generated/*"]
+}
