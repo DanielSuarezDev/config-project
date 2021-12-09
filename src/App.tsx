@@ -1,7 +1,17 @@
+import { QueryClient, QueryClientProvider } from "react-query";
+import { BrowserRouter as Router } from "react-router-dom";
+import { AuthProvider } from "./context/AuthProvider";
+import { Routes } from "./routes";
+
 export const App = () => {
+  const queryClient = new QueryClient();
   return (
-    <div>
-      <h1>Hola Mundo</h1>
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <Router>
+          <Routes />
+        </Router>
+      </AuthProvider>
+    </QueryClientProvider>
   );
 };
