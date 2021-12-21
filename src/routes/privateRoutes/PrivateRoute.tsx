@@ -1,17 +1,15 @@
 /* eslint-disable no-console */
-import React, { FC, ReactElement } from "react";
+import { FC, ReactElement } from "react";
 import { Navigate } from "react-router";
-import { useAuth } from "../../hooks/useAuth";
+
+import { useAuth } from "../../context/AuthContext/AuthContext";
 import { ROUTES } from "../types";
 
 export const PrivateRoute: FC = ({ children }) => {
-  const { isLogged, persisted } = useAuth();
+  const { userConfig } = useAuth();
 
-  if (isLogged) {
+  if (userConfig) {
     return children as ReactElement;
   }
-  if (persisted) {
-    return <Navigate to={ROUTES.LOGIN} state={{ from: location }} />;
-  }
-  return <p>Loading...</p>;
+  return <Navigate to={ROUTES.LOGIN} state={{ from: location }} />;
 };

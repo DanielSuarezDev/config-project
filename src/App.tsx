@@ -1,17 +1,26 @@
-import { QueryClient, QueryClientProvider } from "react-query";
 import { BrowserRouter as Router } from "react-router-dom";
-import { AuthProvider } from "./context/AuthProvider";
-import { Routes } from "./routes";
+import { QueryClient, QueryClientProvider } from "react-query";
 
-export const App = () => {
+import { Routes } from "./routes";
+import { MyTheme } from "./config/theme";
+import { ThemeProvider } from "styled-components";
+import { GlobalStyle } from "./config/GlobalStyle";
+import { AuthProvider } from "./context/AuthContext/AuthContext";
+
+const App = () => {
   const queryClient = new QueryClient();
   return (
     <QueryClientProvider client={queryClient}>
-      <AuthProvider>
+      <ThemeProvider theme={MyTheme}>
+        <GlobalStyle />
         <Router>
-          <Routes />
+          <AuthProvider>
+            <Routes />
+          </AuthProvider>
         </Router>
-      </AuthProvider>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 };
+
+export default App;
